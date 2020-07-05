@@ -1,5 +1,6 @@
 var base_url = "http://localhost:8000/" //"http://datanigeria.pythonanywhere.com/"
 var auth_token = {auth: localStorage.getItem("auth"), username: localStorage.getItem("username"), period: "2010-01-01/2020-12-30"};
+var branch = document.getElementById("branch").innerHTML;
 
 var datatable = $('#deposits_saves_table').DataTable({
     'paging'      : true,
@@ -24,7 +25,7 @@ window.onload = ()=>{
 // FETCHING SECTION
 function get_loans_summary() {
 
-        fetch(base_url + 'get_loans_summary', {
+        fetch(base_url + 'get_loans_summary/'+ branch, {
         method:"POST",
         headers:{
             'Content-Type':'application/json;charset=utf-8'
@@ -40,7 +41,7 @@ function get_loans_summary() {
 
 function get_loans_per_segment() {
 
-    fetch(base_url + 'get_number_of_loans_per_segment', {
+    fetch(base_url + 'get_number_of_loans_per_segment/'+ branch, {
     method:"POST",
     headers:{
         'Content-Type':'application/json;charset=utf-8'
@@ -56,7 +57,7 @@ function get_loans_per_segment() {
 
 function get_customers_per_time() {
 
-    fetch(base_url + 'get_grouped_customers_by_month', {
+    fetch(base_url + 'get_grouped_customers_by_month/'+ branch, {
     method:"POST",
     headers:{
         'Content-Type':'application/json;charset=utf-8'
@@ -72,7 +73,7 @@ function get_customers_per_time() {
 
 function get_loans_per_time() {
 
-    fetch(base_url + 'get_loan_performance_over_time', {
+    fetch(base_url + 'get_loan_performance_over_time/'+ branch, {
     method:"POST",
     headers:{
         'Content-Type':'application/json;charset=utf-8'
@@ -88,7 +89,7 @@ function get_loans_per_time() {
 
 function get_savings_and_deposits() {
 
-        fetch(base_url + 'get_deposits_vs_saves', {
+        fetch(base_url + 'get_deposits_vs_saves/'+ branch, {
         method:"POST",
         headers:{
             'Content-Type':'application/json;charset=utf-8'
